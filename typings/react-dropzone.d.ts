@@ -1,7 +1,9 @@
 import * as React from "react";
 
 export { FileWithPath } from "file-selector";
-export default function Dropzone(props: DropzoneProps & React.RefAttributes<DropzoneRef>): JSX.Element;
+export default function Dropzone(
+  props: DropzoneProps & React.RefAttributes<DropzoneRef>
+): JSX.Element;
 export function useDropzone(options?: DropzoneOptions): DropzoneState;
 
 export interface DropzoneProps extends DropzoneOptions {
@@ -10,7 +12,12 @@ export interface DropzoneProps extends DropzoneOptions {
 
 export interface FileError {
   message: string;
-  code: "file-too-large" | "file-too-small" | "too-many-files" | "file-invalid-type" | string;
+  code:
+    | "file-too-large"
+    | "file-too-small"
+    | "too-many-files"
+    | "file-invalid-type"
+    | string;
 }
 
 export interface FileRejection {
@@ -24,20 +31,31 @@ export type DropzoneOptions = Pick<React.HTMLProps<HTMLElement>, PropTypes> & {
   maxSize?: number;
   maxFiles?: number;
   preventDropOnDocument?: boolean;
+  acceptNonFiles?: boolean;
   noClick?: boolean;
   noKeyboard?: boolean;
   noDrag?: boolean;
   noDragEventsBubbling?: boolean;
   disabled?: boolean;
-  onDrop?: <T extends File>(acceptedFiles: T[], fileRejections: FileRejection[], event: DropEvent) => void;
+  onDrop?: <T extends File>(
+    acceptedFiles: T[],
+    fileRejections: FileRejection[],
+    event: DropEvent
+  ) => void;
   onDropAccepted?: <T extends File>(files: T[], event: DropEvent) => void;
   onDropRejected?: (fileRejections: FileRejection[], event: DropEvent) => void;
-  getFilesFromEvent?: (event: DropEvent) => Promise<Array<File | DataTransferItem>>;
+  getFilesFromEvent?: (
+    event: DropEvent
+  ) => Promise<Array<File | DataTransferItem>>;
   onFileDialogCancel?: () => void;
   validator?: <T extends File>(file: T) => FileError | FileError[] | null;
 };
 
-export type DropEvent = React.DragEvent<HTMLElement> | React.ChangeEvent<HTMLInputElement> | DragEvent | Event;
+export type DropEvent =
+  | React.DragEvent<HTMLElement>
+  | React.ChangeEvent<HTMLInputElement>
+  | DragEvent
+  | Event;
 
 export type DropzoneState = DropzoneRef & {
   isFocused: boolean;
@@ -63,11 +81,9 @@ export interface DropzoneRootProps extends React.HTMLAttributes<HTMLElement> {
   [key: string]: any;
 }
 
-export interface DropzoneInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface DropzoneInputProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
   refKey?: string;
 }
 
-type PropTypes = "multiple"
-  | "onDragEnter"
-  | "onDragOver"
-  | "onDragLeave";
+type PropTypes = "multiple" | "onDragEnter" | "onDragOver" | "onDragLeave";
