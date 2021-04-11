@@ -416,7 +416,6 @@ export function useDropzone(options = {}) {
     ...defaultProps,
     ...options
   };
-
   const rootRef = useRef(null);
   const inputRef = useRef(null);
 

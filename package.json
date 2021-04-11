@@ -1,6 +1,6 @@
 {
-  "name": "react-dropzone",
-  "description": "Simple HTML5 drag-drop zone with React.js",
+  "name": "react-dropzone-tag",
+  "description": "Simple HTML5 drag-drop zone with React.js with support for dropping tags from the web",
   "main": "dist/index.js",
   "module": "dist/es/index.js",
   "scripts": {
@@ -166,7 +166,7 @@
       "path": "@commitlint/prompt"
     }
   },
-  "version": "0.0.0-development",
+  "version": "11.3.2",
   "engines": {
     "node": ">= 10"
   },
